@@ -1,0 +1,612 @@
+import pandas as pd
+ds=pd.read_csv("Game_medal.csv",encoding="ISO-8859-1")
+ds.head() #1st 5 records
+ds.tail() #last 5 records
+ds.describe() #sehema of that record on 75% which year is there 
+ds.shape #(rows,columns)
+ds.shift #sorted
+ds.info() #total 10 column on range 
+ds.NOC #display nation
+ds.Medal
+ds.plot()
+import matplotlib.pyplot as plt
+plt.plot(ds.Edition)
+plt.plot(ds.Edition,label="Year of Event")
+plt.legend(loc='upper left')
+plt.plot(ds.Edition,color="blue",label="Year of Event")
+plt.plot(ds.Edition,linewidth=2.5,color="red",label="Year of Event")
+fig=plt.gcf()
+ds.plot()
+fig.savefig('my_figure.png')
+
+
+
+
+
+
+Welcome to Canopy's interactive data-analysis environment!
+
+Kernel running in the 'User' environment.
+
+Pylab is active using TkAgg.
+
+Python 3.5.2 |Enthought, Inc. (x86_64)| (default, Mar  3 2017, 18:53:01) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 5.6.0 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+import pandas as pd
+
+ds=pd.read_csv("Game_medal.csv",encoding="ISO-8859-1")
+
+ds.head()
+Out[3]: 
+     City  Edition     Sport Discipline             Athlete  NOC Gender  \
+0  Athens     1896  Aquatics   Swimming       HAJOS, Alfred  HUN    Men   
+1  Athens     1896  Aquatics   Swimming    HERSCHMANN, Otto  AUT    Men   
+2  Athens     1896  Aquatics   Swimming   DRIVAS, Dimitrios  GRE    Men   
+3  Athens     1896  Aquatics   Swimming  MALOKINIS, Ioannis  GRE    Men   
+4  Athens     1896  Aquatics   Swimming  CHASAPIS, Spiridon  GRE    Men   
+
+                        Event Event_gender   Medal  
+0              100m freestyle            M    Gold  
+1              100m freestyle            M  Silver  
+2  100m freestyle for sailors            M  Bronze  
+3  100m freestyle for sailors            M    Gold  
+4  100m freestyle for sailors            M  Silver  
+
+ds.tail()
+Out[4]: 
+          City  Edition      Sport       Discipline               Athlete  \
+29211  Beijing     2008  Wrestling  Wrestling Gre-R        ENGLICH, Mirko   
+29212  Beijing     2008  Wrestling  Wrestling Gre-R  MIZGAITIS, Mindaugas   
+29213  Beijing     2008  Wrestling  Wrestling Gre-R       PATRIKEEV, Yuri   
+29214  Beijing     2008  Wrestling  Wrestling Gre-R         LOPEZ, Mijain   
+29215  Beijing     2008  Wrestling  Wrestling Gre-R        BAROEV, Khasan   
+
+       NOC Gender       Event Event_gender   Medal  
+29211  GER    Men   84 - 96kg            M  Silver  
+29212  LTU    Men  96 - 120kg            M  Bronze  
+29213  ARM    Men  96 - 120kg            M  Bronze  
+29214  CUB    Men  96 - 120kg            M    Gold  
+29215  RUS    Men  96 - 120kg            M  Silver  
+
+ds.describe()
+Out[5]: 
+            Edition
+count  29216.000000
+mean    1967.713171
+std       32.406293
+min     1896.000000
+25%     1948.000000
+50%     1976.000000
+75%     1996.000000
+max     2008.000000
+
+ds.shape
+Out[6]: (29216, 10)
+
+ds.shift
+Out[7]: 
+<bound method DataFrame.shift of           City  Edition      Sport       Discipline  \
+0       Athens     1896   Aquatics         Swimming   
+1       Athens     1896   Aquatics         Swimming   
+2       Athens     1896   Aquatics         Swimming   
+3       Athens     1896   Aquatics         Swimming   
+4       Athens     1896   Aquatics         Swimming   
+5       Athens     1896   Aquatics         Swimming   
+6       Athens     1896   Aquatics         Swimming   
+7       Athens     1896   Aquatics         Swimming   
+8       Athens     1896   Aquatics         Swimming   
+9       Athens     1896   Aquatics         Swimming   
+10      Athens     1896   Aquatics         Swimming   
+11      Athens     1896  Athletics        Athletics   
+12      Athens     1896  Athletics        Athletics   
+13      Athens     1896  Athletics        Athletics   
+14      Athens     1896  Athletics        Athletics   
+15      Athens     1896  Athletics        Athletics   
+16      Athens     1896  Athletics        Athletics   
+17      Athens     1896  Athletics        Athletics   
+18      Athens     1896  Athletics        Athletics   
+19      Athens     1896  Athletics        Athletics   
+20      Athens     1896  Athletics        Athletics   
+21      Athens     1896  Athletics        Athletics   
+22      Athens     1896  Athletics        Athletics   
+23      Athens     1896  Athletics        Athletics   
+24      Athens     1896  Athletics        Athletics   
+25      Athens     1896  Athletics        Athletics   
+26      Athens     1896  Athletics        Athletics   
+27      Athens     1896  Athletics        Athletics   
+28      Athens     1896  Athletics        Athletics   
+29      Athens     1896  Athletics        Athletics   
+       ...      ...        ...              ...   
+29186  Beijing     2008  Wrestling  Wrestling Free.   
+29187  Beijing     2008  Wrestling  Wrestling Free.   
+29188  Beijing     2008  Wrestling  Wrestling Free.   
+29189  Beijing     2008  Wrestling  Wrestling Gre-R   
+29190  Beijing     2008  Wrestling  Wrestling Gre-R   
+29191  Beijing     2008  Wrestling  Wrestling Gre-R   
+29192  Beijing     2008  Wrestling  Wrestling Gre-R   
+29193  Beijing     2008  Wrestling  Wrestling Gre-R   
+29194  Beijing     2008  Wrestling  Wrestling Gre-R   
+29195  Beijing     2008  Wrestling  Wrestling Gre-R   
+29196  Beijing     2008  Wrestling  Wrestling Gre-R   
+29197  Beijing     2008  Wrestling  Wrestling Gre-R   
+29198  Beijing     2008  Wrestling  Wrestling Gre-R   
+29199  Beijing     2008  Wrestling  Wrestling Gre-R   
+29200  Beijing     2008  Wrestling  Wrestling Gre-R   
+29201  Beijing     2008  Wrestling  Wrestling Gre-R   
+29202  Beijing     2008  Wrestling  Wrestling Gre-R   
+29203  Beijing     2008  Wrestling  Wrestling Gre-R   
+29204  Beijing     2008  Wrestling  Wrestling Gre-R   
+29205  Beijing     2008  Wrestling  Wrestling Gre-R   
+29206  Beijing     2008  Wrestling  Wrestling Gre-R   
+29207  Beijing     2008  Wrestling  Wrestling Gre-R   
+29208  Beijing     2008  Wrestling  Wrestling Gre-R   
+29209  Beijing     2008  Wrestling  Wrestling Gre-R   
+29210  Beijing     2008  Wrestling  Wrestling Gre-R   
+29211  Beijing     2008  Wrestling  Wrestling Gre-R   
+29212  Beijing     2008  Wrestling  Wrestling Gre-R   
+29213  Beijing     2008  Wrestling  Wrestling Gre-R   
+29214  Beijing     2008  Wrestling  Wrestling Gre-R   
+29215  Beijing     2008  Wrestling  Wrestling Gre-R   
+
+                           Athlete  NOC Gender                       Event  \
+0                    HAJOS, Alfred  HUN    Men              100m freestyle   
+1                 HERSCHMANN, Otto  AUT    Men              100m freestyle   
+2                DRIVAS, Dimitrios  GRE    Men  100m freestyle for sailors   
+3               MALOKINIS, Ioannis  GRE    Men  100m freestyle for sailors   
+4               CHASAPIS, Spiridon  GRE    Men  100m freestyle for sailors   
+5            CHOROPHAS, Efstathios  GRE    Men             1200m freestyle   
+6                    HAJOS, Alfred  HUN    Men             1200m freestyle   
+7                 ANDREOU, Joannis  GRE    Men             1200m freestyle   
+8            CHOROPHAS, Efstathios  GRE    Men              400m freestyle   
+9                    NEUMANN, Paul  AUT    Men              400m freestyle   
+10               PEPANOS, Antonios  GRE    Men              400m freestyle   
+11                   LANE, Francis  USA    Men                        100m   
+12                SZOKOLYI, Alajos  HUN    Men                        100m   
+13                   BURKE, Thomas  USA    Men                        100m   
+14                  HOFMANN, Fritz  GER    Men                        100m   
+15                  CURTIS, Thomas  USA    Men                110m hurdles   
+16              GOULDING, Grantley  GBR    Men                110m hurdles   
+17               LERMUSIAUX, Albin  FRA    Men                       1500m   
+18                    FLACK, Edwin  AUS    Men                       1500m   
+19                   BLAKE, Arthur  USA    Men                       1500m   
+20                 GMELIN, Charles  GBR    Men                        400m   
+21                   BURKE, Thomas  USA    Men                        400m   
+22                JAMISON, Herbert  USA    Men                        400m   
+23              GOLEMIS, Dimitrios  GRE    Men                        800m   
+24                    FLACK, Edwin  AUS    Men                        800m   
+25                    DANI, Nandor  HUN    Men                        800m   
+26                VERSIS, Sotirios  GRE    Men                discus throw   
+27                 GARRETT, Robert  USA    Men                discus throw   
+28     PARASKEVOPOULOS, Panagiotis  GRE    Men                discus throw   
+29                   CLARK, Ellery  USA    Men                   high jump   
+                           ...  ...    ...                         ...   
+29186             MUTALIMOV, Marid  KAZ    Men                  96 - 120kg   
+29187              TAYMAZOV, Artur  UZB    Men                  96 - 120kg   
+29188          AKHMEDOV, Bakhtiyar  RUS    Men                  96 - 120kg   
+29189                AMOYAN, Roman  ARM    Men                      - 55kg   
+29190               PARK, Eun-Chul  KOR    Men                      - 55kg   
+29191               MANKIEV, Nazyr  RUS    Men                      - 55kg   
+29192            BAYRAMOV, Rovshan  AZE    Men                      - 55kg   
+29193        TENGIZBAYEV, Nurbakyt  KAZ    Men                   55 - 60kg   
+29194           TIUMENBAEV, Ruslan  KGZ    Men                   55 - 60kg   
+29195           ALBIEV, Islam-Beka  RUS    Men                   55 - 60kg   
+29196             RAHIMOV, Vitaliy  AZE    Men                   55 - 60kg   
+29197           SIAMIONAU, Mikhail  BLR    Men                   60 - 66kg   
+29198             VARDANYAN, Armen  UKR    Men                   60 - 66kg   
+29199               GUENOT, Steeve  FRA    Men                   60 - 66kg   
+29200           BEGALIEV, Kanatbek  KGZ    Men                   60 - 66kg   
+29201           GUENOT, Christophe  FRA    Men                   66 - 74kg   
+29202              YANAKIEV, Yavor  BUL    Men                   66 - 74kg   
+29203          KVIRKELIA, Manuchar  GEO    Men                   66 - 74kg   
+29204             CHANG, Yongxiang  CHN    Men                   66 - 74kg   
+29205                AVLUCA, Nazmi  TUR    Men                   74 - 84kg   
+29206             MINGUZZI, Andrea  ITA    Men                   74 - 84kg   
+29207                FODOR, Zoltan  HUN    Men                   74 - 84kg   
+29208              MAMBETOV, Asset  KAZ    Men                   84 - 96kg   
+29209                WHEELER, Adam  USA    Men                   84 - 96kg   
+29210           KHUSHTOV, Aslanbek  RUS    Men                   84 - 96kg   
+29211               ENGLICH, Mirko  GER    Men                   84 - 96kg   
+29212         MIZGAITIS, Mindaugas  LTU    Men                  96 - 120kg   
+29213              PATRIKEEV, Yuri  ARM    Men                  96 - 120kg   
+29214                LOPEZ, Mijain  CUB    Men                  96 - 120kg   
+29215               BAROEV, Khasan  RUS    Men                  96 - 120kg   
+
+      Event_gender   Medal  
+0                M    Gold  
+1                M  Silver  
+2                M  Bronze  
+3                M    Gold  
+4                M  Silver  
+5                M  Bronze  
+6                M    Gold  
+7                M  Silver  
+8                M  Bronze  
+9                M    Gold  
+10               M  Silver  
+11               M  Bronze  
+12               M  Bronze  
+13               M    Gold  
+14               M  Silver  
+15               M    Gold  
+16               M  Silver  
+17               M  Bronze  
+18               M    Gold  
+19               M  Silver  
+20               M  Bronze  
+21               M    Gold  
+22               M  Silver  
+23               M  Bronze  
+24               M    Gold  
+25               M  Silver  
+26               M  Bronze  
+27               M    Gold  
+28               M  Silver  
+29               M    Gold  
+           ...     ...  
+29186            M  Bronze  
+29187            M    Gold  
+29188            M  Silver  
+29189            M  Bronze  
+29190            M  Bronze  
+29191            M    Gold  
+29192            M  Silver  
+29193            M  Bronze  
+29194            M  Bronze  
+29195            M    Gold  
+29196            M  Silver  
+29197            M  Bronze  
+29198            M  Bronze  
+29199            M    Gold  
+29200            M  Silver  
+29201            M  Bronze  
+29202            M  Bronze  
+29203            M    Gold  
+29204            M  Silver  
+29205            M  Bronze  
+29206            M    Gold  
+29207            M  Silver  
+29208            M  Bronze  
+29209            M  Bronze  
+29210            M    Gold  
+29211            M  Silver  
+29212            M  Bronze  
+29213            M  Bronze  
+29214            M    Gold  
+29215            M  Silver  
+
+[29216 rows x 10 columns]>
+
+ds.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 29216 entries, 0 to 29215
+Data columns (total 10 columns):
+City            29216 non-null object
+Edition         29216 non-null int64
+Sport           29216 non-null object
+Discipline      29216 non-null object
+Athlete         29216 non-null object
+NOC             29216 non-null object
+Gender          29216 non-null object
+Event           29216 non-null object
+Event_gender    29216 non-null object
+Medal           29216 non-null object
+dtypes: int64(1), object(9)
+memory usage: 2.2+ MB
+
+ds.NOC
+Out[9]: 
+0        HUN
+1        AUT
+2        GRE
+3        GRE
+4        GRE
+5        GRE
+6        HUN
+7        GRE
+8        GRE
+9        AUT
+10       GRE
+11       USA
+12       HUN
+13       USA
+14       GER
+15       USA
+16       GBR
+17       FRA
+18       AUS
+19       USA
+20       GBR
+21       USA
+22       USA
+23       GRE
+24       AUS
+25       HUN
+26       GRE
+27       USA
+28       GRE
+29       USA
+
+29186    KAZ
+29187    UZB
+29188    RUS
+29189    ARM
+29190    KOR
+29191    RUS
+29192    AZE
+29193    KAZ
+29194    KGZ
+29195    RUS
+29196    AZE
+29197    BLR
+29198    UKR
+29199    FRA
+29200    KGZ
+29201    FRA
+29202    BUL
+29203    GEO
+29204    CHN
+29205    TUR
+29206    ITA
+29207    HUN
+29208    KAZ
+29209    USA
+29210    RUS
+29211    GER
+29212    LTU
+29213    ARM
+29214    CUB
+29215    RUS
+Name: NOC, Length: 29216, dtype: object
+
+ds.medal
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-10-0e4ba76d703f> in <module>()
+----> 1 ds.medal
+
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/pandas/core/generic.py in __getattr__(self, name)
+   4370             if self._info_axis._can_hold_identifiers_and_holds_name(name):
+   4371                 return self[name]
+-> 4372             return object.__getattribute__(self, name)
+   4373 
+   4374     def __setattr__(self, name, value):
+AttributeError: 'DataFrame' object has no attribute 'medal' 
+
+ds.medal()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-11-5b6b68361f9a> in <module>()
+----> 1 ds.medal()
+
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/pandas/core/generic.py in __getattr__(self, name)
+   4370             if self._info_axis._can_hold_identifiers_and_holds_name(name):
+   4371                 return self[name]
+-> 4372             return object.__getattribute__(self, name)
+   4373 
+   4374     def __setattr__(self, name, value):
+AttributeError: 'DataFrame' object has no attribute 'medal' 
+
+ds.plot()
+Out[12]: <matplotlib.axes._subplots.AxesSubplot at 0x7ff10187e630>
+
+import matplotlib.pyplot as plt
+
+plt.plot(ds.Edition)
+Out[14]: [<matplotlib.lines.Line2D at 0x7ff101054a20>]
+
+plt.plot(ds.edition,labe="Year of Event")
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-15-785c47b33660> in <module>()
+----> 1 plt.plot(ds.edition,labe="Year of Event")
+
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/pandas/core/generic.py in __getattr__(self, name)
+   4370             if self._info_axis._can_hold_identifiers_and_holds_name(name):
+   4371                 return self[name]
+-> 4372             return object.__getattribute__(self, name)
+   4373 
+   4374     def __setattr__(self, name, value):
+AttributeError: 'DataFrame' object has no attribute 'edition' 
+
+plt.plot(ds.edition,label="Year of Event")
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-16-61ddf4d574ec> in <module>()
+----> 1 plt.plot(ds.edition,label="Year of Event")
+
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/pandas/core/generic.py in __getattr__(self, name)
+   4370             if self._info_axis._can_hold_identifiers_and_holds_name(name):
+   4371                 return self[name]
+-> 4372             return object.__getattribute__(self, name)
+   4373 
+   4374     def __setattr__(self, name, value):
+AttributeError: 'DataFrame' object has no attribute 'edition' 
+
+plt.plot(ds.edition,lable="Year of Event")
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-17-ff5224eea746> in <module>()
+----> 1 plt.plot(ds.edition,lable="Year of Event")
+
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/pandas/core/generic.py in __getattr__(self, name)
+   4370             if self._info_axis._can_hold_identifiers_and_holds_name(name):
+   4371                 return self[name]
+-> 4372             return object.__getattribute__(self, name)
+   4373 
+   4374     def __setattr__(self, name, value):
+AttributeError: 'DataFrame' object has no attribute 'edition' 
+
+plt.plot(ds.Edition,label="Year of Event")
+Out[18]: [<matplotlib.lines.Line2D at 0x7ff101054f98>]
+
+plt.legend(loc='upper left')
+Out[19]: <matplotlib.legend.Legend at 0x7ff101095828>
+
+plt.plot(ds.Edition,color="blue",labe="Year of Event")
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-20-6958207fefb9> in <module>()
+----> 1 plt.plot(ds.Edition,color="blue",labe="Year of Event")
+
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/matplotlib/pyplot.py in plot(*args, **kwargs)
+   3316                       mplDeprecation)
+   3317     try:
+-> 3318         ret = ax.plot(*args, **kwargs)
+   3319     finally:
+   3320         ax._hold = washold
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/matplotlib/__init__.py in inner(ax, *args, **kwargs)
+   1890                     warnings.warn(msg % (label_namer, func.__name__),
+   1891                                   RuntimeWarning, stacklevel=2)
+-> 1892             return func(ax, *args, **kwargs)
+   1893         pre_doc = inner.__doc__
+   1894         if pre_doc is None:
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/matplotlib/axes/_axes.py in plot(self, *args, **kwargs)
+   1404         kwargs = cbook.normalize_kwargs(kwargs, _alias_map)
+   1405 
+-> 1406         for line in self._get_lines(*args, **kwargs):
+   1407             self.add_line(line)
+   1408             lines.append(line)
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/matplotlib/axes/_base.py in _grab_next_args(self, *args, **kwargs)
+    405                 return
+    406             if len(remaining) <= 3:
+--> 407                 for seg in self._plot_args(remaining, kwargs):
+    408                     yield seg
+    409                 return
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/matplotlib/axes/_base.py in _plot_args(self, tup, kwargs)
+    393         ncx, ncy = x.shape[1], y.shape[1]
+    394         for j in xrange(max(ncx, ncy)):
+--> 395             seg = func(x[:, j % ncx], y[:, j % ncy], kw, kwargs)
+    396             ret.append(seg)
+    397         return ret
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/matplotlib/axes/_base.py in _makeline(self, x, y, kw, kwargs)
+    300         default_dict = self._getdefaults(None, kw)
+    301         self._setdefaults(default_dict, kw)
+--> 302         seg = mlines.Line2D(x, y, **kw)
+    303         return seg
+    304 
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/matplotlib/lines.py in __init__(self, xdata, ydata, linewidth, linestyle, color, marker, markersize, markeredgewidth, markeredgecolor, markerfacecolor, markerfacecoloralt, fillstyle, antialiased, dash_capstyle, solid_capstyle, dash_joinstyle, solid_joinstyle, pickradius, drawstyle, markevery, **kwargs)
+    429         # update kwargs before updating data to give the caller a
+    430         # chance to init axes (and hence unit support)
+--> 431         self.update(kwargs)
+    432         self.pickradius = pickradius
+    433         self.ind_offset = 0
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/matplotlib/artist.py in update(self, props)
+    883         try:
+    884             ret = [_update_property(self, k, v)
+--> 885                    for k, v in props.items()]
+    886         finally:
+    887             self.eventson = store
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/matplotlib/artist.py in <listcomp>(.0)
+    883         try:
+    884             ret = [_update_property(self, k, v)
+--> 885                    for k, v in props.items()]
+    886         finally:
+    887             self.eventson = store
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/matplotlib/artist.py in _update_property(self, k, v)
+    876                 func = getattr(self, 'set_' + k, None)
+    877                 if func is None or not six.callable(func):
+--> 878                     raise AttributeError('Unknown property %s' % k)
+    879                 return func(v)
+    880 
+AttributeError: Unknown property labe 
+
+plt.plot(ds.Edition,color="blue",label="Year of Event")
+Out[21]: [<matplotlib.lines.Line2D at 0x7ff101095550>]
+
+plt.plot(ds.edition,linewidth=2.5,color="red",label="Year of Event")
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-22-bf74c9d238a9> in <module>()
+----> 1 plt.plot(ds.edition,linewidth=2.5,color="red",label="Year of Event")
+
+/home/unix/.local/share/canopy/edm/envs/User/lib/python3.5/site-packages/pandas/core/generic.py in __getattr__(self, name)
+   4370             if self._info_axis._can_hold_identifiers_and_holds_name(name):
+   4371                 return self[name]
+-> 4372             return object.__getattribute__(self, name)
+   4373 
+   4374     def __setattr__(self, name, value):
+AttributeError: 'DataFrame' object has no attribute 'edition' 
+
+plt.plot(ds.Edition,linewidth=2.5,color="red",label="Year of Event")
+Out[23]: [<matplotlib.lines.Line2D at 0x7ff101095c88>]
+
+fig=plt.gcf()
+
+ds.plot()
+Out[25]: <matplotlib.axes._subplots.AxesSubplot at 0x7ff100e844e0>
+
+fig.savefig('my_figure.png')
+
+ds.Medal
+Out[27]: 
+0          Gold
+1        Silver
+2        Bronze
+3          Gold
+4        Silver
+5        Bronze
+6          Gold
+7        Silver
+8        Bronze
+9          Gold
+10       Silver
+11       Bronze
+12       Bronze
+13         Gold
+14       Silver
+15         Gold
+16       Silver
+17       Bronze
+18         Gold
+19       Silver
+20       Bronze
+21         Gold
+22       Silver
+23       Bronze
+24         Gold
+25       Silver
+26       Bronze
+27         Gold
+28       Silver
+29         Gold
+ 
+29186    Bronze
+29187      Gold
+29188    Silver
+29189    Bronze
+29190    Bronze
+29191      Gold
+29192    Silver
+29193    Bronze
+29194    Bronze
+29195      Gold
+29196    Silver
+29197    Bronze
+29198    Bronze
+29199      Gold
+29200    Silver
+29201    Bronze
+29202    Bronze
+29203      Gold
+29204    Silver
+29205    Bronze
+29206      Gold
+29207    Silver
+29208    Bronze
+29209    Bronze
+29210      Gold
+29211    Silver
+29212    Bronze
+29213    Bronze
+29214      Gold
+29215    Silver
+Name: Medal, Length: 29216, dtype: object
+
+
