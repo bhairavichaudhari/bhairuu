@@ -1,0 +1,461 @@
+install.packages("DataExplorer") 
+library(DataExplorer)
+choco = read.csv('flavors_of_cacao.csv', header = T, stringsAsFactors = F)
+choco
+summary(choco)
+choco$Cocoa.Percent = as.numeric(gsub('%','',choco$Cocoa.Percent))
+summary(choco)
+choco$Review.Date = as.character(choco$Review.Date)
+summary(choco)
+plot_str(choco) # use for displaying Structure of dataset 
+plot_missing(choco) # use for analysing number of missing values in dataset
+plot_histogram(choco) #  use for continues variables
+plot_density(choco) #  use for continues variables
+plot_bar(choco) #  use for categorial variables
+
+
+OUTPUT:-
+
+
+
+R version 3.4.4 (2018-03-15) -- "Someone to Lean On"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> install.packages("DataExplorer") 
+Installing package into ‘/home/unix/R/x86_64-pc-linux-gnu-library/3.4’
+(as ‘lib’ is unspecified)
+trying URL 'https://cloud.r-project.org/src/contrib/DataExplorer_0.6.0.tar.gz'
+Content type 'application/x-gzip' length 1386628 bytes (1.3 MB)
+==================================================
+downloaded 1.3 MB
+
+* installing *source* package ‘DataExplorer’ ...
+** package ‘DataExplorer’ successfully unpacked and MD5 sums checked
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (DataExplorer)
+
+The downloaded source packages are in
+	‘/tmp/RtmpVh5YbT/downloaded_packages’
+Warning message:
+R graphics engine version 12 is not supported by this version of RStudio. The Plots tab will be disabled until a newer version of RStudio is installed. 
+> library(DataExplorer)
+> choco = read.csv('flavors_of_cacao.csv', header = T, stringsAsFactors = F)
+> choco
+                   Company...Maker.if.known.              Specific.Bean.Origin.or.Bar.Name
+1                                   A. Morin                                   Agua Grande
+2                                   A. Morin                                         Kpime
+3                                   A. Morin                                        Atsane
+4                                   A. Morin                                         Akata
+5                                   A. Morin                                        Quilla
+6                                   A. Morin                                      Carenero
+7                                   A. Morin                                          Cuba
+8                                   A. Morin                                  Sur del Lago
+9                                   A. Morin                                Puerto Cabello
+10                                  A. Morin                                       Pablino
+11                                  A. Morin                                        Panama
+12                                  A. Morin                                    Madagascar
+13                                  A. Morin                                        Brazil
+14                                  A. Morin                                      Equateur
+15                                  A. Morin                                      Colombie
+16                                  A. Morin                                      Birmanie
+17                                  A. Morin                              Papua New Guinea
+18                                  A. Morin                                         Chuao
+19                                  A. Morin                                         Piura
+20                                  A. Morin                          Chanchamayo Province
+21                                  A. Morin                          Chanchamayo Province
+22                                  A. Morin                                       Bolivia
+23                                  A. Morin                                          Peru
+24                                    Acalli                       Chulucanas, El Platanal
+25                                    Acalli                             Tumbes, Norandino
+26                                       Adi                                    Vanua Levu
+27                                       Adi                            Vanua Levu, Toto-A
+28                                       Adi                                    Vanua Levu
+29                                       Adi                        Vanua Levu, Ami-Ami-CA
+30                        Aequare (Gianduja)                     Los Rios, Quevedo, Arriba
+31                        Aequare (Gianduja)                     Los Rios, Quevedo, Arriba
+32                                  Ah Cacao                                       Tabasco
+33                        Akesson's (Pralus)      Bali (west), Sukrama Family, Melaya area
+34                        Akesson's (Pralus)                   Madagascar, Ambolikapiky P.
+35                        Akesson's (Pralus)                       Monte Alegre, D. Badero
+36                             Alain Ducasse                                       Trinite
+37                             Alain Ducasse                                       Vietnam
+38                             Alain Ducasse                                    Madagascar
+39                             Alain Ducasse                                         Chuao
+40                             Alain Ducasse                                  Piura, Perou
+41                                 Alexandre                              Winak Coop, Napo
+42                                 Alexandre                           La Dalia, Matagalpa
+43                                 Alexandre                                    Tien Giang
+44                                 Alexandre                        Makwale Village, Kyela
+45                     Altus aka Cao Artisan                                     Momotombo
+46                     Altus aka Cao Artisan                                      Acopagro
+47                     Altus aka Cao Artisan                                    CIAAB Coop
+48                     Altus aka Cao Artisan                                  Villa Andina
+49                     Altus aka Cao Artisan                                Gruppo Salinas
+50                     Altus aka Cao Artisan                                  Sur del Lago
+51                     Altus aka Cao Artisan                                      Conacado
+52                     Altus aka Cao Artisan                                       Bolivia
+53                     Altus aka Cao Artisan                                       Bolivia
+54                     Altus aka Cao Artisan                                          Peru
+55                                     Amano                                        Morobe
+56                                     Amano                                      Dos Rios
+57                                     Amano                                        Guayas
+58                                     Amano                                         Chuao
+59                                     Amano                                      Montanya
+60                                     Amano                                Bali, Jembrana
+61                                     Amano                                    Madagascar
+62                                     Amano                                       Cuyagua
+63                                     Amano                                       Ocumare
+64                     Amatller (Simon Coll)                                         Ghana
+65                     Amatller (Simon Coll)                                       Ecuador
+66                     Amatller (Simon Coll)                                       Ecuador
+67                     Amatller (Simon Coll)                                         Ghana
+68                                   Amazona    LamasdelChanka, San Martin, Oro Verde coop
+69                                   Amazona           Bellavista Gran Pajeten, San Martin
+70                                  Ambrosia                                        Belize
+71                                  Ambrosia                                    Madagascar
+72                                  Ambrosia                            Dominican Republic
+73                                  Ambrosia                              Papua New Guinea
+74                                  Ambrosia                                     Venezuela
+75                                  Ambrosia                                          Peru
+76                                    Amedei                      Piura, Blanco de Criollo
+77                                    Amedei                                     Porcelana
+78                                    Amedei                                          Nine
+79                                    Amedei                                         Chuao
+80                                    Amedei                                       Ecuador
+81                                    Amedei                                       Jamaica
+82                                    Amedei                                       Grenada
+83                                    Amedei                                     Venezuela
+84                                    Amedei                                    Madagascar
+85                                    Amedei                                      Trinidad
+86                                    Amedei                                 Toscano Black
+87                                    Amedei                                 Toscano Black
+88                                    Amedei                                 Toscano Black
+89                                      AMMA                                       Catongo
+90                                      AMMA             Monte Alegre, 3 diff. plantations
+91                                      AMMA             Monte Alegre, 3 diff. plantations
+92                                      AMMA             Monte Alegre, 3 diff. plantations
+93                                      AMMA             Monte Alegre, 3 diff. plantations
+94                                   Anahata                                       Elvesia
+95                                    Animas                                     Alto Beni
+96                                       Ara                                    Madagascar
+97                                       Ara                                       Chiapas
+98                                       Ara                                      Equateur
+99                                       Ara                                    Trincheras
+100                                    Arete                                      San Juan
+101                                    Arete                                  Kokoa Kamili
+102                                    Arete                                    Tien Giang
+103                                    Arete                             Hacienda Victoria
+104                                    Arete                              Costa Esmeraldas
+105                                    Arete                                        Lachua
+106                                    Arete                                        Rugoso
+107                                    Arete                               La Masica, FHIA
+108                                    Arete                         Coto Brus, Terciopelo
+109                                    Arete                                       Phantom
+110                                    Arete                                       Elvesia
+111                                    Arete                                  Matasawalevu
+      REF Review.Date Cocoa.Percent  Company.Location Rating                Bean.Type
+1    1876        2016           63%            France   3.75                         
+2    1676        2015           70%            France   2.75                         
+3    1676        2015           70%            France   3.00                         
+4    1680        2015           70%            France   3.50                         
+5    1704        2015           70%            France   3.50                         
+6    1315        2014           70%            France   2.75                  Criollo
+7    1315        2014           70%            France   3.50                         
+8    1315        2014           70%            France   3.50                  Criollo
+9    1319        2014           70%            France   3.75                  Criollo
+10   1319        2014           70%            France   4.00                         
+11   1011        2013           70%            France   2.75                         
+12   1011        2013           70%            France   3.00                  Criollo
+13   1011        2013           70%            France   3.25                         
+14   1011        2013           70%            France   3.75                         
+15   1015        2013           70%            France   2.75                         
+16   1015        2013           70%            France   3.00                         
+17   1015        2013           70%            France   3.25                         
+18   1015        2013           70%            France   4.00               Trinitario
+19   1019        2013           70%            France   3.25                         
+20   1019        2013           70%            France   3.50                         
+21   1019        2013           63%            France   4.00                         
+22    797        2012           70%            France   3.50                         
+23    797        2012           63%            France   3.75                         
+24   1462        2015           70%            U.S.A.   3.75                         
+25   1470        2015           70%            U.S.A.   3.75                  Criollo
+26    705        2011           60%              Fiji   2.75               Trinitario
+27    705        2011           80%              Fiji   3.25               Trinitario
+28    705        2011           88%              Fiji   3.50               Trinitario
+29    705        2011           72%              Fiji   3.50               Trinitario
+30    370        2009           55%           Ecuador   2.75       Forastero (Arriba)
+31    370        2009           70%           Ecuador   3.00       Forastero (Arriba)
+32    316        2009           70%            Mexico   3.00                  Criollo
+33    636        2011           75%       Switzerland   3.75               Trinitario
+34    502        2010           75%       Switzerland   2.75                  Criollo
+35    508        2010           75%       Switzerland   2.75                Forastero
+36   1215        2014           65%            France   2.75               Trinitario
+37   1215        2014           75%            France   2.75               Trinitario
+38   1215        2014           75%            France   3.00               Trinitario
+39   1061        2013           75%            France   2.50               Trinitario
+40   1173        2013           75%            France   2.50                         
+41   1944        2017           70%       Netherlands   3.50     Forastero (Nacional)
+42   1944        2017           70%       Netherlands   3.50      Criollo, Trinitario
+43   1944        2017           70%       Netherlands   3.50               Trinitario
+44   1944        2017           70%       Netherlands   3.50                Forastero
+45   1728        2016           60%            U.S.A.   2.75                         
+46   1728        2016           60%            U.S.A.   3.00                         
+47   1732        2016           60%            U.S.A.   2.50                         
+48   1732        2016           60%            U.S.A.   2.50                         
+49   1732        2016           60%            U.S.A.   2.75                         
+50   1125        2013           60%            U.S.A.   2.50                         
+51   1125        2013           60%            U.S.A.   3.00               Trinitario
+52   1129        2013           80%            U.S.A.   3.25                         
+53   1133        2013           60%            U.S.A.   3.00                         
+54   1133        2013           60%            U.S.A.   3.25                         
+55    725        2011           70%            U.S.A.   4.00                         
+56    470        2010           70%            U.S.A.   3.75                         
+57    470        2010           70%            U.S.A.   4.00                         
+58    544        2010           70%            U.S.A.   3.00               Trinitario
+59    363        2009           70%            U.S.A.   3.00                         
+60    304        2008           70%            U.S.A.   2.75                         
+61    129        2007           70%            U.S.A.   3.50               Trinitario
+62    147        2007           70%            U.S.A.   3.00                         
+63    175        2007           70%            U.S.A.   3.75                  Criollo
+64    322        2009           70%             Spain   3.00                Forastero
+65    327        2009           70%             Spain   2.75                         
+66    464        2009           85%             Spain   2.75                         
+67    464        2009           85%             Spain   3.00                Forastero
+68   1145        2013           72%              Peru   3.25                         
+69   1145        2013           73%              Peru   3.50               Trinitario
+70   1494        2015           64%            Canada   3.00               Trinitario
+71   1494        2015           66%            Canada   3.25               Trinitario
+72   1498        2015           75%            Canada   3.25                         
+73   1498        2015           63%            Canada   3.25                         
+74   1498        2015           70%            Canada   3.25                         
+75   1498        2015           68%            Canada   3.50                         
+76    979        2012           70%             Italy   3.75                         
+77    111        2007           70%             Italy   4.00      Criollo (Porcelana)
+78    111        2007           75%             Italy   4.00                    Blend
+79    111        2007           70%             Italy   5.00               Trinitario
+80    123        2007           70%             Italy   3.00               Trinitario
+81    123        2007           70%             Italy   3.00               Trinitario
+82    123        2007           70%             Italy   3.50               Trinitario
+83    123        2007           70%             Italy   3.75 Trinitario (85% Criollo)
+84    123        2007           70%             Italy   4.00 Trinitario (85% Criollo)
+85    129        2007           70%             Italy   3.50               Trinitario
+86    170        2007           63%             Italy   3.50                    Blend
+87     40        2006           70%             Italy   5.00                    Blend
+88     75        2006           66%             Italy   4.00                    Blend
+89   1065        2013           75%            Brazil   3.25      Forastero (Catongo)
+90    572        2010           85%            Brazil   2.75    Forastero (Parazinho)
+91    572        2010           50%            Brazil   3.75    Forastero (Parazinho)
+92    572        2010           75%            Brazil   3.75    Forastero (Parazinho)
+93    572        2010           60%            Brazil   4.00    Forastero (Parazinho)
+94   1259        2014           75%            U.S.A.   3.00                         
+95   1852        2016           75%            U.S.A.   3.50                         
+96   1375        2014           75%            France   3.00               Trinitario
+97   1379        2014           72%            France   2.50                         
+98   1379        2014           75%            France   2.75                         
+99   1379        2014           75%            France   3.00                         
+100  1724        2016           70%            U.S.A.   3.50               Trinitario
+101  1724        2016           70%            U.S.A.   3.75                         
+102  1900        2016           73%            U.S.A.   3.50               Trinitario
+103  1904        2016           70%            U.S.A.   3.25                         
+104  1904        2016           70%            U.S.A.   3.25                         
+105  1904        2016           70%            U.S.A.   3.50                         
+106  1904        2016           70%            U.S.A.   3.75                         
+107  1908        2016           70%            U.S.A.   3.50                         
+108  1908        2016           70%            U.S.A.   4.00                         
+109  1924        2016           70%            U.S.A.   4.00     Forastero (Nacional)
+110  1928        2016           70%            U.S.A.   3.75                         
+111  1928        2016           70%            U.S.A.   3.25                         
+                 Broad.Bean.Origin
+1                         Sao Tome
+2                             Togo
+3                             Togo
+4                             Togo
+5                             Peru
+6                        Venezuela
+7                             Cuba
+8                        Venezuela
+9                        Venezuela
+10                            Peru
+11                          Panama
+12                      Madagascar
+13                          Brazil
+14                         Ecuador
+15                        Colombia
+16                           Burma
+17                Papua New Guinea
+18                       Venezuela
+19                            Peru
+20                            Peru
+21                            Peru
+22                         Bolivia
+23                            Peru
+24                            Peru
+25                            Peru
+26                            Fiji
+27                            Fiji
+28                            Fiji
+29                            Fiji
+30                         Ecuador
+31                         Ecuador
+32                          Mexico
+33                       Indonesia
+34                      Madagascar
+35                          Brazil
+36                        Trinidad
+37                         Vietnam
+38                      Madagascar
+39                       Venezuela
+40                            Peru
+41                         Ecuador
+42                       Nicaragua
+43                         Vietnam
+44                        Tanzania
+45                       Nicaragua
+46                            Peru
+47                         Bolivia
+48                            Peru
+49                         Ecuador
+50                       Venezuela
+51              Dominican Republic
+52                         Bolivia
+53                         Bolivia
+54                            Peru
+55                Papua New Guinea
+56              Dominican Republic
+57                         Ecuador
+58                       Venezuela
+59                       Venezuela
+60                       Indonesia
+61                      Madagascar
+62                       Venezuela
+63                       Venezuela
+64                           Ghana
+65                         Ecuador
+66                         Ecuador
+67                           Ghana
+68                            Peru
+69                            Peru
+70                          Belize
+71                      Madagascar
+72              Dominican Republic
+73                Papua New Guinea
+74                       Venezuela
+75                            Peru
+76                            Peru
+77                       Venezuela
+78                                
+79                       Venezuela
+80                         Ecuador
+81                         Jamaica
+82                         Grenada
+83                       Venezuela
+84                      Madagascar
+85                        Trinidad
+86                                
+87                                
+88                                
+89                          Brazil
+90                          Brazil
+91                          Brazil
+92                          Brazil
+93                          Brazil
+94              Dominican Republic
+95                         Bolivia
+96                      Madagascar
+97                          Mexico
+98                         Ecuador
+99                       Venezuela
+100                       Trinidad
+101                       Tanzania
+102                        Vietnam
+103                        Ecuador
+104                        Ecuador
+105                      Guatemala
+106                      Nicaragua
+107                       Honduras
+108                     Costa Rica
+109                           Peru
+110             Dominican Republic
+111                           Fiji
+ [ reached getOption("max.print") -- omitted 1684 rows ]
+> summary(choco)
+ Company...Maker.if.known. Specific.Bean.Origin.or.Bar.Name      REF        Review.Date  
+ Length:1795               Length:1795                      Min.   :   5   Min.   :2006  
+ Class :character          Class :character                 1st Qu.: 576   1st Qu.:2010  
+ Mode  :character          Mode  :character                 Median :1069   Median :2013  
+                                                            Mean   :1036   Mean   :2012  
+                                                            3rd Qu.:1502   3rd Qu.:2015  
+                                                            Max.   :1952   Max.   :2017  
+ Cocoa.Percent      Company.Location       Rating       Bean.Type         Broad.Bean.Origin 
+ Length:1795        Length:1795        Min.   :1.000   Length:1795        Length:1795       
+ Class :character   Class :character   1st Qu.:2.875   Class :character   Class :character  
+ Mode  :character   Mode  :character   Median :3.250   Mode  :character   Mode  :character  
+                                       Mean   :3.186                                        
+                                       3rd Qu.:3.500                                        
+                                       Max.   :5.000                                        
+> choco$Cocoa.Percent = as.numeric(gsub('%','',choco$Cocoa.Percent))
+> summary(choco)
+ Company...Maker.if.known. Specific.Bean.Origin.or.Bar.Name      REF        Review.Date  
+ Length:1795               Length:1795                      Min.   :   5   Min.   :2006  
+ Class :character          Class :character                 1st Qu.: 576   1st Qu.:2010  
+ Mode  :character          Mode  :character                 Median :1069   Median :2013  
+                                                            Mean   :1036   Mean   :2012  
+                                                            3rd Qu.:1502   3rd Qu.:2015  
+                                                            Max.   :1952   Max.   :2017  
+ Cocoa.Percent   Company.Location       Rating       Bean.Type         Broad.Bean.Origin 
+ Min.   : 42.0   Length:1795        Min.   :1.000   Length:1795        Length:1795       
+ 1st Qu.: 70.0   Class :character   1st Qu.:2.875   Class :character   Class :character  
+ Median : 70.0   Mode  :character   Median :3.250   Mode  :character   Mode  :character  
+ Mean   : 71.7                      Mean   :3.186                                        
+ 3rd Qu.: 75.0                      3rd Qu.:3.500                                        
+ Max.   :100.0                      Max.   :5.000                                        
+> choco$Review.Date = as.character(choco$Review.Date)
+> summary(choco)
+ Company...Maker.if.known. Specific.Bean.Origin.or.Bar.Name      REF       Review.Date       
+ Length:1795               Length:1795                      Min.   :   5   Length:1795       
+ Class :character          Class :character                 1st Qu.: 576   Class :character  
+ Mode  :character          Mode  :character                 Median :1069   Mode  :character  
+                                                            Mean   :1036                     
+                                                            3rd Qu.:1502                     
+                                                            Max.   :1952                     
+ Cocoa.Percent   Company.Location       Rating       Bean.Type         Broad.Bean.Origin 
+ Min.   : 42.0   Length:1795        Min.   :1.000   Length:1795        Length:1795       
+ 1st Qu.: 70.0   Class :character   1st Qu.:2.875   Class :character   Class :character  
+ Median : 70.0   Mode  :character   Median :3.250   Mode  :character   Mode  :character  
+ Mean   : 71.7                      Mean   :3.186                                        
+ 3rd Qu.: 75.0                      3rd Qu.:3.500                                        
+ Max.   :100.0                      Max.   :5.000                                        
+> plot_str(choco) # use for displaying Structure of dataset 
+> plot_missing(choco)
+> plot_histogram(choco) 
+> plot_density(choco)
+> plot_bar(choco)
+4 columns ignored with more than 50 categories.
+Company...Maker.if.known.: 416 categories
+Specific.Bean.Origin.or.Bar.Name: 1039 categories
+Company.Location: 60 categories
+Broad.Bean.Origin: 101 categories
+
+>
